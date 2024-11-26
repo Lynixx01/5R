@@ -1,0 +1,265 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  background: black;
+  display: flex;
+  justify-content: center;
+}
+
+section {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 100vh;
+  width: 90%;
+  background: black;
+  color: white;
+  gap: 100px;
+  font-family: Gotham;
+}
+
+section .circle {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border-radius: 100%;
+  background: rgba(255, 255, 255, 0.8);
+  filter: blur(200px);
+}
+
+section .title {
+  position: relative;
+  font-size: 3.5rem;
+  height: 100px;
+  width: 600px;
+  display: flex;
+  justify-content: center;
+  transition: all ease 300ms;
+}
+
+section .title .container {
+  position: relative;
+  gap: 10px;
+  display: flex;
+}
+
+section .title .container .side-text-animator {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 60px;
+  transition: all ease 500ms;
+}
+
+section .title .container h1 {
+  position: relative;
+  transition: all cubic-bezier(0.03, -0.13, 0, 1.7) 1000ms, opacity ease 500ms,
+    filter ease 200ms;
+}
+
+section .title .container .side-text-animator .hide-to-show {
+  filter: blur(20px);
+  margin-top: -100px;
+  opacity: 0;
+}
+
+section .title .container .side-text-animator .show-to-hide {
+  filter: blur(20px);
+  margin-top: 100px;
+  transition: all ease 5000ms, opacity ease 5000ms, filter ease 200ms;
+  opacity: 0;
+}
+
+section .cards-collection {
+  position: relative;
+  height: 80%;
+  overflow: scroll;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  z-index: 9;
+}
+
+section .cards-collection .cards-container {
+  position: relative;
+  height: fit-content;
+  -moz-column-count: 2;
+  -webkit-column-count: 2;
+  padding: 30px;
+  column-count: 2;
+  column-gap: 40px;
+}
+/* Hide scrollbar for Chrome, Safari and Opera */
+section .cards-collection::-webkit-scrollbar {
+  display: none;
+}
+
+section .cards-collection .card {
+  margin-bottom: 25px;
+  position: relative;
+  width: 350px;
+  transition: all cubic-bezier(0.12, 0.28, 0, 1.5) 700ms;
+  -webkit-perspective: 800px;
+  perspective: 800px;
+  break-inside: avoid;
+}
+
+section .cards-collection .card .card-container {
+  position: relative;
+  width: 100%;
+  padding: 15px;
+  border: 2px solid rgba(255, 255, 255, 0.452);
+  border-radius: 10px;
+  transition: all cubic-bezier(0.12, 0.28, 0, 1.5) 700ms;
+  backdrop-filter: blur(90px);
+  overflow: hidden;
+
+  transform: rotateX(0deg) rotateY(0deg);
+}
+
+section .cards-collection .card .images {
+  position: relative;
+  width: 100%;
+  max-height: 300px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+section .cards-collection .card .images .before,
+section .cards-collection .card .images .after {
+  max-height: fit-content;
+  width: 100%;
+  object-fit: cover;
+  transition: all cubic-bezier(0.12, 0.28, 0, 1.05) 700ms;
+}
+
+section .cards-collection .card .images .after {
+  position: absolute;
+  width: 150%;
+  left: 100%;
+}
+
+section .cards-collection .card .card-title {
+  margin-top: 15px;
+  font-size: 1.4rem;
+  height: fit-content;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+section .cards-collection .card .card-title h2 {
+  margin: 0;
+  font-size: 1.4rem;
+}
+
+section .cards-collection .card .card-title p {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: normal;
+}
+
+section .cards-collection .card .card-title div {
+  position: relative;
+  display: flex;
+  justify-content: start;
+}
+
+section .cards-collection .card .card-title div .after,
+section .cards-collection .card .card-title div .before {
+  top: 0%;
+  left: 0;
+  font-weight: 500;
+  transition: all ease 400ms;
+}
+
+section .cards-collection .card .card-title div .after {
+  position: absolute;
+  opacity: 0;
+  transform: translateY(15px);
+}
+
+section .cards-collection .card p {
+  margin-top: 5px;
+  font-size: 14px;
+  color: white;
+  opacity: 0.7;
+  transition: all ease 200ms;
+}
+
+/* HOVER ANIMATION */
+
+section .title:hover {
+  transform: scale(1.2);
+}
+
+section .title .container:hover h1:not(:hover) {
+  opacity: 0.2;
+}
+
+section .title .container:hover h1:hover {
+  transform: scale(1.2);
+}
+
+/* section .cards-collection .card:hover {
+    z-index: 99;
+    transform: scale(1.1);
+  } */
+
+.cards-collection .card-not-hover {
+  transform: scale(0.9);
+  opacity: 0.5;
+}
+
+section .cards-collection .card:hover .images .before {
+  margin-left: -100%;
+  width: 150%;
+}
+
+section .cards-collection .card:hover p {
+  font-weight: 200;
+}
+
+section .cards-collection .card:hover .images .after {
+  left: 0%;
+  width: 100%;
+}
+
+section .cards-collection .card:hover .card-title div .after {
+  opacity: 1;
+  transform: translateY(0px);
+}
+
+section .cards-collection .card:hover .card-title div .before {
+  opacity: 0;
+  transform: translateY(-15px);
+}
+
+/* ON CLICK */
+section .cards-collection .card-clicked .images .before {
+  margin-left: -100%;
+  width: 150%;
+}
+
+section .cards-collection .card-clicked .images .after {
+  left: 0%;
+  width: 100%;
+}
+
+section .cards-collection .card-clicked .card-title div .after {
+  opacity: 1;
+  transform: translateY(0px);
+}
+
+section .cards-collection .card-clicked .card-title div .before {
+  opacity: 0;
+  transform: translateY(-15px);
+}
